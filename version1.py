@@ -5,7 +5,7 @@ import os
 import requests
 
 
-def importer(link_in):
+def importer(link_in): #vai para o site da ufmg e gera um arquivo .txt com o nome do curso selecionado, todas as matérias presentes nele e um resumo de cada matéria
     print("Gerando base de dados(Isso pode demorar um pouco)...")
     page = requests.get(link_in)
     soup = BeautifulSoup(page.content, "html.parser")
@@ -31,13 +31,13 @@ def importer(link_in):
             for linha in arquivo_entrada:
                 # remove tudo antes do caractere "-" e o espaço subsequente
                 linha = linha.split("- ", 1)[-1]
-                if not "II" in linha and not "IV" in linha and not "VI" in linha:
+                if not "II" in linha and not "IV" in linha and not "VI" in linha: #rdesconsidera duplicatas
                     if linha.strip():
                         # escreve a linha no arquivo de saída
                         arquivo_saida.write(linha)
 
 
-def dictgenerator():
+def dictgenerator(): #gera um dicionário com todos os cursos da UFMG como key direcionando ao site do respectivo curso
     link = "https://ufmg.br/cursos/graduacao/"
     page = requests.get(link)
     soup = BeautifulSoup(page.content, "html.parser")
@@ -61,7 +61,7 @@ def dictgenerator():
     return out
 
 
-def tester(arquivos, nomes):
+def tester(arquivos, nomes): #efetua o teste de afinidade para n cursos
     curso = [None] * arquivos
     counter = [0] * arquivos
     for i in range(1, arquivos):
