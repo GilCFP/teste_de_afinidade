@@ -1,0 +1,27 @@
+ACT080-DIG - INTRODUÇÃO À BIOMEDICINA:  A história e evolução da Biomedicina. Noções básicas sobre a atuação do biomédico e sobre a regulamentação da profissão. Diretrizes curriculares e o curso de Biomedicina da UFMG. Ato profissional e responsabilidade técnica. Campos de atuação e mercado de trabalho.
+ANATOMIA HUMANA BASICA: Sistemas componentes do organismo humano: noções elementares. 
+CITOLOGIA E HISTOLOGIA F: Estruturas celulares, tecidos e sistemas orgânicos: aspectos fundamentais, correlação da organização morfológica com processos funcionais.
+QUIMICA GERAL F: ESTRUTURA ELETRÔNICA DOS ÁTOMOS. PROPRIEDADES PERIÓDICAS DOS ELEMENTOS. LIGAÇÕES QUÍMICAS. ÍONS E MOLÉCULAS. TEORIA DOS ORBITAIS MOLECULARES. TEORIAS DE ÁCIDOS E BASES. FORÇAS INTERMOLECULARES.
+QUIMICA GERAL EXPERIMENTAL F: MEDIDAS VOLUMETRICAS, TECNICAS DE MANIPULACAO E SEGURANCA, REACOESQUIMICAS, RELACOES ESTEQUIOMETRICAS E PREPARO E ANALISE DE SOLU-  COES.
+GENÉTICA F: Bases genético-moleculares da herança. Base genética da variabilidade e de doenças. Recombinação e mutação. Estrutura, função e expressão do genoma. Bases da variação e mecanismos de evolução.
+BIOQUIMICA CELULAR F: RELAÇÃO DE ESTRUTURA E FUNÇÃO DE BIOMOLÉCULAS. MECANISMOS DE CATÁLISE BIOLÓGICA. BIOSSÍNTESE E DEGRADAÇÃO DE BIOMOLÉCULAS.
+QUÍMICA INORGÂNICA F: Química de coordenação. Ligação química nos complexos. Espécies complexas em solução. Introdução aos mecanismos de reações nos complexos. Química dos elementos de interesse biológico.
+IMUNOLOGIA BASICA: Fundamentos de imunobiologia e imunoquímica. Indução das respostas celular e humoral estimuladas pelo antígeno e suas conseqüências.
+FISIOLOGIA F: FUNCIONAMENTO E REGULAÇÃO DOS ÓRGÃOS E SISTEMAS HUMANOS: FUNDAMENTOS FISIOLÓGICOS IMPORTANTES PARA A PRÁTICA FARMACÊUTICA.
+QUIMICA ORGANICA I F: ESTUDO DOS COMPOSTOS DE CARBONO: CARACTERÍSTICAS, PROPRIEDADES E NOMENCLATURA; INTRODUÇÃO ÀS REAÇÕES ORGÂNICAS; ACIDEZ-BASICIDADE DE COMPOSTOS ORGÂNICOS; ESTEREOQUÍMICA, CONFORMAÇÕES, QUIRALIDADE E ESTEREOISOMERISMO; REAÇÕES RADICALARES E REAÇÕES IÔNICAS: MECANISMOS DE REAÇÃO.
+BIOLOGIA MOLECULAR F: ESTRUTURA DOS GENES. EXPRESSÃO E CONTROLE DA EXPRESSÃO GÊNICA. APLICAÇÕES DA BIOLOGIA MOLECULAR.
+FARMACOLOGIA BÁSICA BIOMEDICINA: Proporcionar noções entre o mecanismo de ação e a dinâmica de interação entre os fármacos e os sistemas biológicos. Ao final da disciplina o aluno deverá ser capaz de dominar aspectos gerais e específicos dos conteúdos de: A) Farmacocinética; B) Farmacodinâmica; c) Farmacologia do S. Nervoso Autônomo; D) Farmacologia do S. Nervoso Central; E) Farmacologia Cardiovascular; F) Farmacologia da inflamação e da dor; G) Farmacologia dos quimioterápicos e H) Diabetes e anti-diabéticos.
+MICROBIOLOGIA BÁSICA - BIOMEDICINA: 
+PARASITOLOGIA HUMANA F: Agentes etiológicos de doenças parasitárias humanas, vetores e reservatórios. Aspectos morfológicos e taxonômicos dos agentes etiológicos. Reconhecimento morfológico das formas evolutivas. Ciclo biológico, transmissão, relação hospedeiro/parasito, patogenia, epidemiologia e profilaxia.
+CITOLOGIA CLINICA: Citologia do trato genital feminino: hormonal e oncótica. Métodos empregados em citopatologia. Correlação clínico-citológica.
+IMUNOLOGIA CLINICA: Mecanismo de imunidade e imunopatologia. Métodos imunológicos utilizados em análisès clínicas.
+BIOQUIMICA CLINICA I: Laboratório de análises clínicas: organização e padronização; fotometria; investigação laboratorial de anormalidades do metabolismo de carboidratos; lípides; proteínas; eletrolitos e minerais. Métodos bioquímicos utilizados no laboratório de análises clínicas: diagnóstico das diversas patologias com alterações nestes metabolismos.
+TOXICOLOGIA AMBIENTAL: 
+EPIDEMIOLOGIA: Conceitos e aplicações da epidemiologia como disciplina da saúde coletiva. Medidas de mortalidade e morbidade e os principais indicadores epidemiológicos e sua importância no planejamento das ações de saúde. Epidemiologia de doenças infecciosas e transição epidemiológica. Testes diagnósticos e sua aplicação na saúde das populações. Principais delineamentos epidemiológicos. Análise crítica dos estudos epidemiológicos. Relação de causalidade nos estudos epidemiológicos.
+RADIOISOTOPOS EM DIAGNOSTICO: RADIOISÓTOPOS EM DIAGNÓSTICOS. ELEMENTOS SANGUÍNEOS RADIOMARCADOS. ALTERAÇÕES FISIOPATOLÓGICAS E RADIOISÓTOPOS. DIAGNÓSTICO DE INFLAMAÇÃO E INFECÇÃO. RADIOENSAIOS. ENSAIOS IMUNORADIOMÉTRICOS.
+HEMATOLOGIA CLINICA: ELEMENTOS SANGUINEOS: ORIGEM, EVOLUCAO, MORFOLOGIA, FISIOLOGIA E  PATOLOGIAS. EXAMES HEMATOLOGICOS PARA DIAGNOSTICOS CLINICOS: METO-DOS E TECNICAS.
+MICOLOGIA CLINICA: 
+BROMATOLOGIA: ALIMENTOS E NUTRIENTES: COMPOSIÇÃO QUÍMICA E MÉTODOS FÍSICO-QUÍMICOS DE ANÁLISE. FUNÇÕES BIOLÓGICAS DOS NUTRIENTES: ENERGÉTICA, ESTRUTURAL, REGULADORA E PROTETORA. ALIMENTOS PARA FINS ESPECIAIS.
+PARASITOLOGIA CLINICA: Parasitismo: ecologia e bioquímica. Parasito-hospedeiro: relacionamento. Parasitoses: patogenia, sintomatologia, diagnóstico clínico e laboratorial, epidemiologia e profilaxia. Métodos, técnicas e interpretações de diversos exames no laboratório de análises clínicas.
+ESTÁGIO EM CIÊNCIAS BIOMÉDICAS I: Estágio Supervisionado em campos de atuação do Biomédico (laboratórios clínicos, laboratórios de pesquisa, clínicas de estética, etc.) com a finalidade de aperfeiçoamento de técnicas e aplicações de conhecimentos em situações da prática profissional.
+MONOGRAFIA DE CONCLUSÃO DE CURSO: 
