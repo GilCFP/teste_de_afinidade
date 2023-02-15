@@ -1,0 +1,5 @@
+flask
+bs4
+random
+requests
+sys
