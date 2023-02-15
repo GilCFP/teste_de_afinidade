@@ -17,7 +17,5 @@ for row in list:
             link= ol.find("a",class_="drop__link")
             name = name.text
             name = name.strip().replace(' ','_')
-            print(f"{name}",end =" ")
             out[name] = (f"https://ufmg.br{link['href']}")
-            i += 0
-print()
+print(out)

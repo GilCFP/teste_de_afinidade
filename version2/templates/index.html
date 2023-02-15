@@ -1,19 +1,43 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Sua Aplicação</title>
-    </head>
-    <body>
-        <h1>Perguntas e Respostas</h1>
-        <form action="/result" method="post">
-            <p>Pergunta 1:</p>
-            <input type="range" name="resposta1" min="0" max="10">
-            <p>Pergunta 2:</p>
-            <input type="range" name="resposta2" min="0" max="10">
-            <p>Pergunta 3:</p>
-            <input type="range" name="resposta3" min="0" max="10">
-            <br><br>
-            <input type="submit" value="Enviar">
-        </form>
-    </body>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afinidade para Graduação</title>
+</head>
+
+<body>
+    <form action="/result" method="post">
+        {%for i in range(1,6)%}
+        <select name="curso{{i}}" class="option-curso" id="select{{i}}" onchange="verificarSelects()">
+            <option value="empty" disabled selected>Escolha um curso</option>
+            {% for key in dict %}
+            <option value="{{key}}">{{key}}</option>
+            {% endfor %}
+        </select>
+        {%endfor%}
+        <button type="submit" id="submit" disabled>Enviar</button>
+    </form>
+    <script>
+        if ({{ status }} == 1) {
+            alert("Devem ser escolhidos pelos menos 2 cursos")
+        }
+        if ({{ status }} == 2) {
+            alert("Os cursos não devem ser os mesmos")
+        }
+        function verificarSelects() {
+            var select1 = document.getElementById('select1')
+            var select2 = document.getElementById('select2')
+            var botao = document.getElementById('submit')
+            if (select1.value !="empty" && select2.value != "empty"){
+                botao.disabled = false;
+            } else {
+                botao.disabled = true;
+            }
+        }
+    </script>
+</body>
+
 </html>

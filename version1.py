@@ -42,7 +42,7 @@ def dictgenerator(): #gera um dicionário com todos os cursos da UFMG como key d
     page = requests.get(link)
     soup = BeautifulSoup(page.content, "html.parser")
     list = soup.find_all("ol", class_="drop__list--depth-1")
-    out = {}
+    dic = {}
     i = 0
     for row in list:
         li = row.find_all("li", class_="drop__list-item")
@@ -55,10 +55,9 @@ def dictgenerator(): #gera um dicionário com todos os cursos da UFMG como key d
                 name = name.text
                 name = name.strip().replace(' ', '_')
                 name = name.replace("/", "_")
-                print(name)
-                out[name] = (f"https://ufmg.br{link['href']}")
+                dic[name] = (f"https://ufmg.br{link['href']}")
                 i += 0
-    return out
+    return dic
 
 
 def tester(arquivos, nomes): #efetua o teste de afinidade para n cursos
@@ -94,9 +93,8 @@ def tester(arquivos, nomes): #efetua o teste de afinidade para n cursos
     for i in range(0, len(curso) - 1):
         print(f"{curso[i][0].split('.')[0].split('/')[1]}: {counter[i]} de {order.count(i)} Afinidade:{round(float(counter[i])/order.count(i)*100 , 2)}%")
 
-
 url_dict = dictgenerator()
-
+print(len(url_dict))
 
 def main():
 
