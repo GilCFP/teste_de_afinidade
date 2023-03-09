@@ -5,8 +5,8 @@
     </head>
     <body>
         <h1>Resultado</h1>
-        <p>Resposta 1: {{ resposta1 }}</p>
-        <p>Resposta 2: {{ resposta2 }}</p>
-        <p>Resposta 3: {{ resposta3 }}</p>
+        {%for i in range(0,max):%}
+            <p>{{curso[i]}}: Afinidade {{resultados[i]}}</p>
+        {%endfor%}
     </body>
 </html>

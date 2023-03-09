@@ -1,0 +1,55 @@
+/* Esconde o menu de seleção padrão */
+select {
+  display: none;
+}
+
+/* Cria um elemento personalizado para o menu de seleção */
+.custom-select {
+  position: relative;
+  display: inline-block;
+  padding: 0.5em 1em;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.2;
+  color: #333;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Cria as bolinhas de seleção usando pseudo-elementos */
+.custom-select:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  margin-top: -0.3em;
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-select:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0.6em;
+  margin-top: -0.1em;
+  border-top: 0.4em solid #666;
+  border-right: 0.4em solid transparent;
+  border-left: 0.4em solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Altera a aparência dos elementos quando selecionados */
+.custom-select.selected:before {
+  background-color: #666;
+}
+
+.custom-select.selected:after {
+  border-top: 0.4em solid #fff;
+}

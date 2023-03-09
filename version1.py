@@ -67,7 +67,7 @@ def tester(arquivos, nomes): #efetua o teste de afinidade para n cursos
         curso[i - 1] = [None]
         curso[i - 1][0] = nomes[i]
     for i in range(0, len(curso) - 1):
-        with open(curso[i][0]) as data:
+        with open(curso[i][0],encoding="utf8") as data:
             for row in data:
                 curso[i].append(row)
     order = [0] * (len(curso[0]) - 1)
@@ -79,6 +79,10 @@ def tester(arquivos, nomes): #efetua o teste de afinidade para n cursos
         results[i] = list(range(1, len(curso[i])))
         random.shuffle(results[i])
     index = [0] * len(curso)
+    questions = {}
+    for i in range(0, len(curso) - 1):
+        questions[curso[i][0].split("/")[1].replace(".txt","")] = []
+    print (questions)
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     for i in range(0, len(order)):
         print(curso[order[i]][results[order[i]]
@@ -92,6 +96,7 @@ def tester(arquivos, nomes): #efetua o teste de afinidade para n cursos
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     for i in range(0, len(curso) - 1):
         print(f"{curso[i][0].split('.')[0].split('/')[1]}: {counter[i]} de {order.count(i)} Afinidade:{round(float(counter[i])/order.count(i)*100 , 2)}%")
+    print (questions)
 
 url_dict = dictgenerator()
 print(len(url_dict))

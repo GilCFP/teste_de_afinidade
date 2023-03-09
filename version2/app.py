@@ -1,14 +1,15 @@
+import json
 import sys
 from bs4 import BeautifulSoup
 import random
 import os
 import requests
-from flask import Flask, render_template, request
-#TODO fazer com que o tester retorne um array com todas as matérias uma por linha , organiazdas de forma aleatória
-#TODO implementar outra função chamada counter que vai contar a pontuação de cada curso
-#TODO possivelmente usar divs com class com os nomes dos cursos pra que consiga contabilizar os pontos
-
-def dictgenerator(): #gera um dicionário com todos os cursos da UFMG como key direcionando ao site do respectivo curso
+from flask import Flask, render_template, request, jsonify
+import json
+#TODO BUG: CURSO PRECISA SER GLOBAL E SER ALTERADO COMO PELA FUNÇÃO, PORÉM QUANDO ISSO ACONTECE NO PRÓXIMO USO ELE FICA SO COM 2 DE LENGHT, CAUSANDO ERRO DE INDEX
+curso = [None] * 6
+total = [None] * 6
+def dictgenerator():  # gera um dicionário com todos os cursos da UFMG como key direcionando ao site do respectivo curso
     link = "https://ufmg.br/cursos/graduacao/"
     page = requests.get(link)
     soup = BeautifulSoup(page.content, "html.parser")
@@ -29,7 +30,9 @@ def dictgenerator(): #gera um dicionário com todos os cursos da UFMG como key d
                 dic[name] = (f"https://ufmg.br{link['href']}")
                 i += 0
     return dic
-def importer(link_in): #vai para o site da ufmg e gera um arquivo .txt com o nome do curso selecionado, todas as matérias presentes nele e um resumo de cada matéria
+
+
+def importer(link_in):  # vai para o site da ufmg e gera um arquivo .txt com o nome do curso selecionado, todas as matérias presentes nele e um resumo de cada matéria
     print("Gerando base de dados(Isso pode demorar um pouco)...")
     page = requests.get(link_in)
     soup = BeautifulSoup(page.content, "html.parser")
@@ -47,26 +50,28 @@ def importer(link_in): #vai para o site da ufmg e gera um arquivo .txt com o nom
             output.write(link.text + ": " + first_paragraph + "\n")
     with open("arquivos/input.txt", "r") as arquivo_entrada:
         # lê a primeira linha do arquivo de entrada
-        nome_arquivo_saida = arquivo_entrada.readline().strip().replace(" ", "_") + ".txt"
+        nome_arquivo_saida = arquivo_entrada.readline().strip().replace(
+            " ", "_").replace("/", "_") + ".txt"
         # abre o arquivo de saída
-        with open("arquivos/" + nome_arquivo_saida, "w") as arquivo_saida:
+        with open("arquivos/" + nome_arquivo_saida, "w", encoding="utf-8") as arquivo_saida:
             # lê cada linha do arquivo de entrada a partir da segunda linha
             arquivo_saida.write(f"{arquivo_entrada.readline().strip()}\n")
             for linha in arquivo_entrada:
                 # remove tudo antes do caractere "-" e o espaço subsequente
                 linha = linha.split("- ", 1)[-1]
-                if not "II" in linha and not "IV" in linha and not "VI" in linha: #rdesconsidera duplicatas
+                if not "II" in linha and not "IV" in linha and not "VI" in linha:  # rdesconsidera duplicatas
                     if linha.strip():
                         # escreve a linha no arquivo de saída
                         arquivo_saida.write(linha)
-def tester(arquivos, nomes): #efetua o teste de afinidade para n cursos
+
+
+def tester(arquivos, nomes):  # efetua o teste de afinidade para n cursos
     curso = [None] * arquivos
-    counter = [0] * arquivos
     for i in range(1, arquivos):
         curso[i - 1] = [None]
         curso[i - 1][0] = nomes[i]
     for i in range(0, len(curso) - 1):
-        with open(curso[i][0]) as data:
+        with open(curso[i][0], encoding="utf8") as data:
             for row in data:
                 curso[i].append(row)
     order = [0] * (len(curso[0]) - 1)
@@ -78,41 +83,45 @@ def tester(arquivos, nomes): #efetua o teste de afinidade para n cursos
         results[i] = list(range(1, len(curso[i])))
         random.shuffle(results[i])
     index = [0] * len(curso)
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    for i in range(0, len(order)):
-        print(curso[order[i]][results[order[i]]
-              [index[order[i]]]], end="\n\n\n\n")
-        index[order[i]] += 1
-        answer = "inicialized"
-        while answer != "S" and answer != "N":
-            answer = input("S para Sim e N para Não: ",)
-        if answer == "S":
-            counter[order[i]] += 1
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    questions = {}
     for i in range(0, len(curso) - 1):
-        print(f"{curso[i][0].split('.')[0].split('/')[1]}: {counter[i]} de {order.count(i)} Afinidade:{round(float(counter[i])/order.count(i)*100 , 2)}%")
+        questions[curso[i][0].split("/")[1].replace(".txt", "")] = []
+    for i in range(0, len(order)):
+        questions[curso[order[i]][0].split("/")[1].replace(".txt", "")].append(curso[order[i]][results[order[i]][index[order[i]]]])
+        index[order[i]] += 1
+    return questions
+
 
 app = Flask(__name__)
 dic = dictgenerator()
+
+
 @app.route('/', methods=['GET'])
 def index():
-    return render_template("index.html", dict = dic, status = 0)
+    while len(curso) < 6:
+        curso.append(None)
+    for i in range(0,6):
+        if curso[i] is not None:
+            curso[i] = None
+    return render_template("index.html", dict=dic, status=0)
+
+
 @app.route('/result', methods=['POST'])
 def result():
-    curso = [None] * 6
-    for i in range(1,6):
+    print(curso)
+    for i in range(1, 6):
+        print(i)
         curso[i] = request.form.get(f"curso{i}")
-    for i in range(1,6):
+    for i in range(1, 6):
         j = i + 1
         while j < 6:
             if curso[i] == curso[j] and (curso[i] != None):
-                return render_template("index.html", dict = dic, status = 2)
-            j +=1
+                return render_template("index.html", dict=dic, status=2)
+            j += 1
     quantidade = 6
-    for i in range (1,6):
+    for i in range(1, 6):
         if curso[i] == None:
             quantidade -= 1
-    print(curso[3], quantidade)
     files = [None] * quantidade
     for i in range(1, quantidade):
         file_name = f"arquivos/{curso[i]}" + ".txt"
@@ -121,14 +130,34 @@ def result():
             files[i] = (f"arquivos/{curso[i]}.txt")
         else:
             files[i] = (f"arquivos/{curso[i]}.txt")
-    matérias = tester(quantidade,files)
-    return render_template("index.html", dict = dic, status = 0)
-    main()
-    resposta1 = request.form['resposta1']
-    resposta2 = request.form['resposta2']
-    resposta3 = request.form['resposta3']
-    return render_template('result.html', resposta1=resposta1, resposta2=resposta2, resposta3=resposta3)
+    # dicionário com uma key pra cada curso selecionado com o nome do respectivo
+    questions = tester(quantidade, files)
 
+    while None in curso:
+        curso.remove(None)
+    print(curso)
+    cursos = ["empty"] * len(curso)
+    for i in range(0, len(curso)):
+        cursos[i] = curso[i]
+    return render_template("test.html", questions=questions, names=cursos)
+
+@app.route('/test', methods=['POST'])
+def test():     
+    print("curso =",curso) 
+    resultados = [0] * len(curso)
+    for i in range(0,len(curso)):
+        inputs = request.form.getlist(f"{curso[i]}")
+        total[i] = len(inputs) * 5
+        for j in range(0,len(inputs)):
+            inputs[j] = int(inputs[j])
+        resultados[i] = f"{round(((sum(inputs)/total[i]) * 100),2)}%"
+        print(curso[i], resultados[i])
+    return render_template("result.html", resultados = resultados , curso = curso, max = len(curso))
+
+
+    
+    
+    
 if __name__ == '__main__':
     app.debug = True
     app.run(port=5000)
