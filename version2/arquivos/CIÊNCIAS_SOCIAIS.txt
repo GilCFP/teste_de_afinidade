@@ -5,7 +5,11 @@ ANTROPOLOGIA I: Emergência da antropologia no século XIX. Relação  com expan
 SOCIOLOGIA I: Conceitos sociológicos introdutórios: Padrões de comportamentos social (Simmel, Weber e Durkheim), papel , status e habitus (Parsons e Bourdieu), classe, estamento, poder e dominação (Marx e Weber).
 INTRODUCAO A ESTATISTICA: Amostragem; organização e apresentação de dados estatísticos; descrição estatística; associação variáveis quantitativas; associação entre variáveis qualitativas; inferência estatística.
 INTRODUÇÃO À DEMOGRAFIA: Conceitos básicos e principais medidas em demografia. Realidade e contexto demográfico brasileiro: no passado recente, na atualidade e perspectiva futura - composição demográfica e socioeconômica, distribuição espacial da população, características da mortalidade, fecundidade e migração. 
+POLITICA III: Estado social. Direitos civis, sociais e políticos. Construção da cidadania. Democracia e totalitarismo. Socialismo.
 METODOLOGIA I: Ciências Sociais: introdução filosófica ao problema do conhecimento e de questões relativas à lógica da investigação, identidade/diferença, contradição, indução/dedução. Construção de teorias em Ciências Sociais. Construção do objeto: conceitos, variáveis.
+ANTROPOLOGIA III: Escola sociológica francesa. Estrutural ismo de Levy- Strauss. Neo-estruturalismo: Leach, Mary Douglas, Dumont e Bourdieu.
+SOCIOLOGIA III: Sociologia clássica: temas substantivos; bases da solidariedade; conflitos; desigualdade social; mudança social.
 SEMINARIOS TEMATICOS DE POLITICA: Análise política contemporânea: instituições políticas, políticas públicas, partidos e sistemas eleitorais, movimentos sociais e sociedade civil e política internacional. 
 SEMINARIOS TEMATICOS DE SOCIOLOGIA: Temas contemporâneos em sociologia: apresentação das teorias sociológicas contemporâneas que reflitam as linhas de pesquisa dos professores da área de sociologia. 
+METODOLOGIA III: Técnicas de pesquisa qualitativa em Ciências Sociais: observação participante, entrevista, análise do discurso, técnicas não reativas.
 MONOGRAFIA: Conteúdo variável.

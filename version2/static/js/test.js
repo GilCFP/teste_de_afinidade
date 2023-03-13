@@ -64,6 +64,10 @@ function formatString(str) {
         var p2 = document.createElement("p");
         var p2Text = document.createTextNode("Muita afinidade");
         p2.appendChild(p2Text);
+        p1.className = "pouca"
+        p2.className= "muita"
+        div["Resposta"].className = "resposta"
+        div["Pergunta"].className = "pergunta"
         //incluindo todos os elementos nas divs
         div["Resposta"].appendChild(p1);
         div["Resposta"].appendChild(input);

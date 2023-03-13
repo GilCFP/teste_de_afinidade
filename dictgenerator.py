@@ -6,6 +6,7 @@ page = requests.get(url)
 soup = BeautifulSoup(page.content, "html.parser")
 list = soup.find_all("ol", class_="drop__list--depth-1")
 out = {}
+names = "nada"
 i = 0
 for row in list:
     li = row.find_all("li", class_="drop__list-item")
@@ -15,7 +16,7 @@ for row in list:
         if name != None:
             ol = element.find("ol",class_="drop__list")
             link= ol.find("a",class_="drop__link")
-            name = name.text
-            name = name.strip().replace(' ','_')
+            name = name.text.strip().replace(' ','_')
+            names = names + f" {name}"
             out[name] = (f"https://ufmg.br{link['href']}")
-print(out)
+print(names)

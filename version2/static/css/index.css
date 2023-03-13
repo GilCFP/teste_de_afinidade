@@ -39,6 +39,7 @@ form select {
     width: 30px;
     height: 30px;
     justify-content: center;
+    pointer-events: none;
 }
 
 .icon-container svg {

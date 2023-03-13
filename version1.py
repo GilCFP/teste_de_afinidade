@@ -11,7 +11,7 @@ def importer(link_in): #vai para o site da ufmg e gera um arquivo .txt com o nom
     soup = BeautifulSoup(page.content, "html.parser")
     title = soup.find("h1", class_="main__title")
     links = soup.find_all("a", class_="drop__link--underlined")
-    with open("arquivos/input.txt", "w") as output:
+    with open("arquivos/input.txt", "w",encoding="utf-8") as output:
         output.write(title.text + "\n")
         for link in links:
             subject_url = "https://ufmg.br" + link["href"]
@@ -21,17 +21,18 @@ def importer(link_in): #vai para o site da ufmg e gera um arquivo .txt com o nom
             first_paragraph = widget.find("p")
             first_paragraph = first_paragraph.text.replace("\n", " ")
             output.write(link.text + ": " + first_paragraph + "\n")
-    with open("arquivos/input.txt", "r") as arquivo_entrada:
+    with open("arquivos/input.txt", "r",encoding="utf-8") as arquivo_entrada:
         # lê a primeira linha do arquivo de entrada
-        nome_arquivo_saida = arquivo_entrada.readline().strip().replace(" ", "_") + ".txt"
+        nome_arquivo_saida = arquivo_entrada.readline().strip().replace(" ", "_").replace("/","_") + ".txt"
         # abre o arquivo de saída
-        with open("arquivos/" + nome_arquivo_saida, "w") as arquivo_saida:
+        with open("arquivos/" + nome_arquivo_saida, "w",encoding="utf-8") as arquivo_saida:
             # lê cada linha do arquivo de entrada a partir da segunda linha
             arquivo_saida.write(f"{arquivo_entrada.readline().strip()}\n")
             for linha in arquivo_entrada:
                 # remove tudo antes do caractere "-" e o espaço subsequente
                 linha = linha.split("- ", 1)[-1]
-                if not "II" in linha and not "IV" in linha and not "VI" in linha: #rdesconsidera duplicatas
+                print(linha.split(":")[0][-3:])
+                if not " II" in linha.split(":")[0][-3:] and not " IV" in linha.split(":")[0][-3:] and not " VI" in linha.split(":")[0][-3:]: #rdesconsidera duplicatas
                     if linha.strip():
                         # escreve a linha no arquivo de saída
                         arquivo_saida.write(linha)
@@ -121,7 +122,7 @@ def main():
         else:
             files[i] = (f"arquivos/{sys.argv[i]}.txt")
             print(f"Vinculado: {sys.argv[i]}.txt")
-    tester(len(sys.argv), files)
+    #tester(len(sys.argv), files)
 
 
 if __name__ == '__main__':
