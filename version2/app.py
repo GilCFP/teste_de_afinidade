@@ -108,9 +108,7 @@ def index():
 
 @app.route('/result', methods=['POST'])
 def result():
-    print(curso)
     for i in range(1, 6):
-        print(i)
         curso[i] = request.form.get(f"curso{i}")
     for i in range(1, 6):
         j = i + 1
@@ -135,7 +133,6 @@ def result():
 
     while None in curso:
         curso.remove(None)
-    print(curso)
     cursos = ["empty"] * len(curso)
     for i in range(0, len(curso)):
         cursos[i] = curso[i]
@@ -143,15 +140,15 @@ def result():
 
 @app.route('/test', methods=['POST'])
 def test():     
-    print("curso =",curso) 
     resultados = [0] * len(curso)
     for i in range(0,len(curso)):
         inputs = request.form.getlist(f"{curso[i]}")
         total[i] = len(inputs) * 5
         for j in range(0,len(inputs)):
             inputs[j] = int(inputs[j])
-        resultados[i] = f"{round(((sum(inputs)/total[i]) * 100),2)}%"
-        print(curso[i], resultados[i])
+        resultados[i] = round(((sum(inputs)/total[i]) * 100),2)
+    for i in range(0,len(curso)):
+        curso[i]= curso[i].replace("_"," ")
     return render_template("result.html", resultados = resultados , curso = curso, max = len(curso))
 
 

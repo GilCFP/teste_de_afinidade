@@ -6,22 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Afinidade para Graduação</title>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 
 <body>
-    <form action="/result" method="post">
-        {%for i in range(1,6)%}
-        <select name="curso{{i}}" class="option-curso" id="select{{i}}" onchange="verificarSelects()">
-            <option value="empty" disabled selected>Escolha um curso</option>
-            {% for key in dict %}
-            <option value="{{key}}">{{key}}</option>
-            {% endfor %}
-        </select>
-        {%endfor%}
-        <button type="submit" id="submit" disabled>Enviar</button>
-    </form>
+    <div id="container">
+        <h1>Selecione dois ou mais cursos</h1>
+
+        <form action="/result" method="post">
+            {%for i in range(1,6)%}
+            <div class="select-container">
+                <select name="curso{{i}}" class="option-curso" id="select{{i}}" onchange="verificarSelects()" disabled>
+                    <option value="empty" disabled selected>Selecione</option>
+                    {% for key in dict %}
+                    <option value="{{key}}">{{key}}</option>
+                    {% endfor %}
+                </select>
+                <div class="icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                        class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                    </svg>
+                </div>
+            </div>
+            {%endfor%}
+            <button type="submit" id="submit" disabled>Enviar</button>
+        </form>
+    </div>
+
     <script>
+        var select = document.querySelectorAll("select")//inicializa permitindo 2 entradas
+        select[0].disabled = false
+        select[1].disabled = false
+        var botao = document.getElementById('submit')//códigos de erro
         if ({{ status }} == 1) {
             alert("Devem ser escolhidos pelos menos 2 cursos")
         }
@@ -29,15 +47,17 @@
             alert("Os cursos não devem ser os mesmos")
         }
         function verificarSelects() {
-            var select1 = document.getElementById('select1')
-            var select2 = document.getElementById('select2')
-            var botao = document.getElementById('submit')
-            if (select1.value !="empty" && select2.value != "empty"){
-                botao.disabled = false;
-            } else {
-                botao.disabled = true;
+            if (select[0].value != "empty" && select[1].value != "empty") {
+                botao.disabled = false;//habilita o botão de submit
+                for (let i = 0; i < 4; i++) {
+                    if (select[i].value != "empty" && select[i + 1].disabled) {//habilita um select a mais do que os ja escolhidos
+                        select[i + 1].disabled = false
+                        break
+                    }
+                }
             }
         }
+
     </script>
 </body>
 

@@ -29,8 +29,7 @@ function formatString(str) {
   return words.join(' ');
 }
 
-    var quest = {{ questions | safe }}; //dicionário com as matérias
-    var names = {{ names | safe }}; //nomes dos cursos
+    
     var random = [] //inicializando uma lista com indices
     var counter = {} //manter traço do indice de cada inteiração
     console.log(quest)
