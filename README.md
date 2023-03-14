@@ -1,4 +1,3 @@
-# escolhendo_curso
 ## Programa criado para testar afinidade com cursos da UFMG</h2>
 
 <p>Esse programa foi criado espontâneamente por mim quando eu estava pensando em qual curso da UFMG queria ingressar. Anteriormente ja tinha olhado as grades dos cursos e conforme ia olhando a matéria decidia se gostava ou não daquela materia, o curso que eu gostasse de mais matérias ganhava. Entretanto, eu efetuei isso pelo navegador e abrindo as páginas dos cursos, o que pode me deixar imparcial. Foi por conta disso que tive a idéia desse programa.</p>
