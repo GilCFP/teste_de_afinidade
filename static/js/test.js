@@ -11,7 +11,6 @@ function formatString(str) {
 
     // Capitaliza a primeira letra da primeira palavra
     if (i === 1) {
-        console.log(word)
         word = word.charAt(0).toUpperCase() + word.slice(1);
     }
     // Verifica se a palavra contém um ponto final, exclamação ou interrogação
@@ -32,7 +31,6 @@ function formatString(str) {
     
     var random = [] //inicializando uma lista com indices
     var counter = {} //manter traço do indice de cada inteiração
-    console.log(quest)
     for (let j = 0; j < names.length; j++) {
         counter[names[j]] = 0
         for (let i = 0; i < quest[names[j]].length; i++) {
