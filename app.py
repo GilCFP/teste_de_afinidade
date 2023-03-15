@@ -1,12 +1,9 @@
-import json
-import sys
 from bs4 import BeautifulSoup
 import random
 import os
 import requests
 from flask import Flask, render_template, request, jsonify
 import json
-#TODO BUG: CURSO PRECISA SER GLOBAL E SER ALTERADO COMO PELA FUNÇÃO, PORÉM QUANDO ISSO ACONTECE NO PRÓXIMO USO ELE FICA SO COM 2 DE LENGHT, CAUSANDO ERRO DE INDEX
 curso = [None] * 6
 total = [None] * 6
 def dictgenerator():  # gera um dicionário com todos os cursos da UFMG como key direcionando ao site do respectivo curso
