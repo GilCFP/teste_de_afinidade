@@ -81,6 +81,7 @@ button {
     height: 50px;
     width: 80px;
     font-size: 1.2em;
+    padding-bottom: 30px;
 }
 
 button:disabled {

@@ -136,13 +136,13 @@ h5 {
 }
 @media (max-width: 425px) {
 h4{
-    font-size: 1.5em;
+    font-size: 1em;
 }
 h1{
         font-size: 2em;
 }
 p{
-        font-size: 1.2em;
+       font-size: 0.8em
 }
     input[type="submit"] {
     height: 40px;
