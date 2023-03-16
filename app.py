@@ -109,8 +109,6 @@ def index():
 
 @app.route('/result', methods=['POST'])
 def result():
-    while len(curso) < 6:
-        curso.append(None)
     for i in range(1, 6):
         curso[i] = request.form.get(f"curso{i}")
     for i in range(1, 6):
