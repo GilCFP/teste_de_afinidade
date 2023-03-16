@@ -150,8 +150,10 @@ def result():
 def test():
     global status
     resultados = [0] * len(curso)
+    print("curso:", curso)
     for i in range(0, len(curso)):
         inputs = request.form.getlist(f"{curso[i]}")
+        print(inputs)
         total[i] = len(inputs) * 5
         for j in range(0, len(inputs)):
             inputs[j] = int(inputs[j])
