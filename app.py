@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import random
 import os
 import requests
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 # TODO BUG: CURSO PRECISA SER GLOBAL E SER ALTERADO COMO PELA FUNÇÃO, PORÉM QUANDO ISSO ACONTECE NO PRÓXIMO USO ELE FICA SO COM 2 DE LENGHT, CAUSANDO ERRO DE INDEX
 curso = [None] * 6
 total = [None] * 6
@@ -94,23 +94,21 @@ def tester(arquivos, nomes):  # efetua o teste de afinidade para n cursos
 
 
 app = Flask(__name__)
+app.secret_key = 'sua_chave_secreta_aqui'
 dic = dictgenerator()
 status = 0
 
 @app.route('/', methods=['GET'])
 def index():
-    while len(curso) < 6:
-        curso.append(None)
-    for i in range(0, 6):
-        if curso[i] is not None:
-            curso[i] = None
+    print('cu')
+    session['curso'] = [None] * 6
+    print(session['curso'])
     return render_template("index.html", dict=dic, status=status)
 
 
 @app.route('/result', methods=['POST'])
 def result():
-    global status
-    global curso
+    curso = session.get('curso')
     for i in range(1, 6):
         try:
             curso[i] = request.form.get(f"curso{i}")
@@ -142,13 +140,14 @@ def result():
     while None in curso:
         curso.remove(None)
     print("curso result depois de limpar :",curso)
+    session['curso']= curso
     return render_template("test.html", questions=questions, names=curso)
 
 
 @app.route('/test', methods=['POST'])
 def test():
     global status
-    global curso
+    curso = session.get('curso')
     resultados = [0] * len(curso)
     print("curso:", curso)
     for i in range(0, len(curso)):
@@ -169,4 +168,5 @@ def test():
 
 
 if __name__ == '__main__':
+    app.debug = True
     app.run(port=5000)
