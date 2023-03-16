@@ -80,6 +80,7 @@ button {
     height: 50px;
     width: 80px;
     margin: 10% 0%;
+    font-size: 1.2em;
 }
 
 button:disabled {
