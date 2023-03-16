@@ -141,11 +141,8 @@ def result():
     print("curso result antes de limpar :",curso)
     while None in curso:
         curso.remove(None)
-    cursos = ["empty"] * len(curso)
-    for i in range(0, len(curso)):
-        cursos[i] = curso[i]
     print("curso result depois de limpar :",curso)
-    return render_template("test.html", questions=questions, names=cursos)
+    return render_template("test.html", questions=questions, names=curso)
 
 
 @app.route('/test', methods=['POST'])
@@ -172,5 +169,4 @@ def test():
 
 
 if __name__ == '__main__':
-    app.debug = True
     app.run(port=5000)
