@@ -110,6 +110,7 @@ def index():
 @app.route('/result', methods=['POST'])
 def result():
     global status
+    global curso
     for i in range(1, 6):
         try:
             curso[i] = request.form.get(f"curso{i}")
@@ -150,6 +151,7 @@ def result():
 @app.route('/test', methods=['POST'])
 def test():
     global status
+    global curso
     resultados = [0] * len(curso)
     print("curso:", curso)
     for i in range(0, len(curso)):
