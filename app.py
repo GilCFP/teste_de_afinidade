@@ -116,7 +116,7 @@ def result():
         except IndexError:
             status = 3
             return redirect(url_for('index'))
-            
+    print("curso result:",curso)
     for i in range(1, 6):
         j = i + 1
         while j < 6:
@@ -137,12 +137,13 @@ def result():
             files[i] = (f"arquivos/{curso[i]}.txt")
     # dicionário com uma key pra cada curso selecionado com o nome do respectivo
     questions = tester(quantidade, files)
-
+    print("curso result antes de limpar :",curso)
     while None in curso:
         curso.remove(None)
     cursos = ["empty"] * len(curso)
     for i in range(0, len(curso)):
         cursos[i] = curso[i]
+    print("curso result depois de limpar :",curso)
     return render_template("test.html", questions=questions, names=cursos)
 
 
