@@ -77,3 +77,26 @@ h5{
   color: aliceblue;
   margin-top: 0;
 }
+button {
+    color: aliceblue;
+    background-color: #027e21;
+    margin-top: 10%;
+    border-radius: 15%;
+    border: NONE;
+}
+
+button:hover {
+    background-color: #00aa2b;
+    color: #ffffff;
+    cursor: pointer;
+    animation: animateButton 0.1s linear forwards;
+    border: #ffffff;
+}
+
+@keyframes animateButton {
+    0% {}
+
+    100% {
+        box-shadow: 0 0 3px #00aa2b;
+    }
+}
