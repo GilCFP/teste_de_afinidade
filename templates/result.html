@@ -10,10 +10,10 @@
     <div class="container">
         <h1>Resultados</h1>
         {%for i in range(0,max):%}
-         <div class="card">
+        <div class="card">
             <h2>{{curso[i]}}</h2>
-            <div class ="percent" style="--clr:#04fc43;--num:{{resultados[i]}}">
-            <div class="dot"></div>
+            <div class="percent" style="--clr:#04fc43;--num:{{resultados[i]}}">
+                <div class="dot"></div>
                 <svg style="width: 100%; height: 100%; position: relative;">
                     <circle cx="50%" cy="50%" r="7em"></circle>
                     <circle cx="50%" cy="50%" r="7em"></circle>
@@ -24,22 +24,24 @@
             </div>
         </div>
         {%endfor%}
-        <div><p><a id="mail" style="position:relative;">Salve os seus resultados</a></p>
-        <p><a href="/">Voltar para a página inicial</a></p>
+        <div>
+            <p><a id="mail" style="position:relative;">Salve os seus resultados</a></p>
+            <p><a href="/">Voltar para a página inicial</a></p>
         </div>
-        
+
     </div>
 </body>
 <script>
-    let cursos = {{curso | safe}}
-    let resultados = {{resultados | safe}}
-    cursos[0] = cursos [0].concat(`: ${resultados[0]}% %0D%0A`)
+    let cursos = {{ curso | safe}}
+    let resultados = {{ resultados | safe}}
+    cursos[0] = cursos[0].concat(`: ${resultados[0]}% %0D%0A`)
     let len = 1
-    while(cursos[len] != undefined){
-        cursos[0] = cursos [0].concat(`${cursos[len]}: ${resultados[len]}% %0D%0A`)
+    while (cursos[len] != undefined) {
+        cursos[0] = cursos[0].concat(`${cursos[len]}: ${resultados[len]}% %0D%0A`)
         len++
     }
     const link = document.getElementById("mail")
-    link.href =`mailto:?subject=Minha%20afinidade&body=Seus%20resultados%20são:%0D%0A${cursos[0]}`
+    link.href = `mailto:?subject=Minha%20afinidade&body=Seus%20resultados%20são:%0D%0A${cursos[0]}`
 </script>
+
 </html>

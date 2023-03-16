@@ -1,48 +1,55 @@
-body{
+body {
     background-color: #191919;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-h1{
+
+h1 {
     color: aliceblue;
     align-self: center;
     margin-bottom: 5px;
 }
-h4{
+
+h4 {
     color: rgb(255, 255, 255);
 }
-p{
+
+p {
     color: rgb(207, 207, 207);
 }
-h6{
+
+h6 {
     margin: 0;
     color: aliceblue;
 }
 
-.pergunta{
+.pergunta {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.resposta{
+
+.resposta {
     display: flex;
     justify-content: center;
 }
-.resposta p{
+
+.resposta p {
     margin: 2% 5%;
 }
-input[type ="range"]{
+
+input[type="range"] {
     -webkit-appearance: none;
     background: rgb(5, 5, 5);
     outline: none;
     width: 20%;
     height: 5px;
-    border-radius: 9px;   
+    border-radius: 9px;
     align-self: center;
 }
-input::-webkit-slider-thumb
-{
+
+input::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     display: block;
@@ -52,37 +59,48 @@ input::-webkit-slider-thumb
     border-radius: 50%;
     border: 1px solid aliceblue;
     cursor: pointer;
-    
+
 }
-input::-webkit-slider-thumb:hover{
+
+input::-webkit-slider-thumb:hover {
     animation: upper 0.2s linear forwards;
     box-shadow: 0 0 5px aliceblue;
 }
+
 @keyframes upper {
-    0%{}
-    100%{
+    0% {}
+
+    100% {
         transform: translateY(120%);
     }
 }
-form{
+
+form {
     margin: 0% 10%;
+    display: flex;
+    flex-direction: column;
 }
-.pouca{
+
+.pouca {
     color: rgb(204, 141, 141);
 }
-.muita{
+
+.muita {
     color: #7cb47a;
 }
-h5{
-  color: aliceblue;
-  margin-top: 0;
+
+h5 {
+    color: aliceblue;
+    margin-top: 0;
 }
+
 input[type="submit"] {
     color: aliceblue;
     background-color: #027e21;
     margin-top: 10%;
     border-radius: 15%;
     border: NONE;
+    align-self: center;
 }
 
 input[type="submit"]:hover {

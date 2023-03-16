@@ -3,9 +3,11 @@ import random
 import os
 import requests
 from flask import Flask, render_template, request, jsonify
-#TODO BUG: CURSO PRECISA SER GLOBAL E SER ALTERADO COMO PELA FUNÇÃO, PORÉM QUANDO ISSO ACONTECE NO PRÓXIMO USO ELE FICA SO COM 2 DE LENGHT, CAUSANDO ERRO DE INDEX
+# TODO BUG: CURSO PRECISA SER GLOBAL E SER ALTERADO COMO PELA FUNÇÃO, PORÉM QUANDO ISSO ACONTECE NO PRÓXIMO USO ELE FICA SO COM 2 DE LENGHT, CAUSANDO ERRO DE INDEX
 curso = [None] * 6
 total = [None] * 6
+
+
 def dictgenerator():  # gera um dicionário com todos os cursos da UFMG como key direcionando ao site do respectivo curso
     link = "https://ufmg.br/cursos/graduacao/"
     page = requests.get(link)
@@ -35,7 +37,7 @@ def importer(link_in):  # vai para o site da ufmg e gera um arquivo .txt com o n
     soup = BeautifulSoup(page.content, "html.parser")
     title = soup.find("h1", class_="main__title")
     links = soup.find_all("a", class_="drop__link--underlined")
-    with open("arquivos/input.txt", "w",encoding="utf-8") as output:
+    with open("arquivos/input.txt", "w", encoding="utf-8") as output:
         output.write(title.text + "\n")
         for link in links:
             subject_url = "https://ufmg.br" + link["href"]
@@ -45,7 +47,7 @@ def importer(link_in):  # vai para o site da ufmg e gera um arquivo .txt com o n
             first_paragraph = widget.find("p")
             first_paragraph = first_paragraph.text.replace("\n", " ")
             output.write(link.text + ": " + first_paragraph + "\n")
-    with open("arquivos/input.txt", "r",encoding="utf-8") as arquivo_entrada:
+    with open("arquivos/input.txt", "r", encoding="utf-8") as arquivo_entrada:
         # lê a primeira linha do arquivo de entrada
         nome_arquivo_saida = arquivo_entrada.readline().strip().replace(
             " ", "_").replace("/", "_") + ".txt"
@@ -56,7 +58,8 @@ def importer(link_in):  # vai para o site da ufmg e gera um arquivo .txt com o n
             for linha in arquivo_entrada:
                 # remove tudo antes do caractere "-" e o espaço subsequente
                 linha = linha.split("- ", 1)[-1]
-                if not " II" in linha.split(":")[0][-3:] and not " IV" in linha.split(":")[0][-3:] and not " VI" in linha.split(":")[0][-3:]: #rdesconsidera duplicatas
+                # rdesconsidera duplicatas
+                if not " II" in linha.split(":")[0][-3:] and not " IV" in linha.split(":")[0][-3:] and not " VI" in linha.split(":")[0][-3:]:
                     if linha.strip():
                         # escreve a linha no arquivo de saída
                         arquivo_saida.write(linha)
@@ -84,7 +87,8 @@ def tester(arquivos, nomes):  # efetua o teste de afinidade para n cursos
     for i in range(0, len(curso) - 1):
         questions[curso[i][0].split("/")[1].replace(".txt", "")] = []
     for i in range(0, len(order)):
-        questions[curso[order[i]][0].split("/")[1].replace(".txt", "")].append(curso[order[i]][results[order[i]][index[order[i]]]])
+        questions[curso[order[i]][0].split(
+            "/")[1].replace(".txt", "")].append(curso[order[i]][results[order[i]][index[order[i]]]])
         index[order[i]] += 1
     return questions
 
@@ -97,7 +101,7 @@ dic = dictgenerator()
 def index():
     while len(curso) < 6:
         curso.append(None)
-    for i in range(0,6):
+    for i in range(0, 6):
         if curso[i] is not None:
             curso[i] = None
     return render_template("index.html", dict=dic, status=0)
@@ -137,22 +141,20 @@ def result():
         cursos[i] = curso[i]
     return render_template("test.html", questions=questions, names=cursos)
 
+
 @app.route('/test', methods=['POST'])
-def test():     
+def test():
     resultados = [0] * len(curso)
-    for i in range(0,len(curso)):
+    for i in range(0, len(curso)):
         inputs = request.form.getlist(f"{curso[i]}")
         total[i] = len(inputs) * 5
-        for j in range(0,len(inputs)):
+        for j in range(0, len(inputs)):
             inputs[j] = int(inputs[j])
-        resultados[i] = round(((sum(inputs)/total[i]) * 100),2)
-    for i in range(0,len(curso)):
-        curso[i]= curso[i].replace("_"," ")
-    return render_template("result.html", resultados = resultados , curso = curso, max = len(curso))
+        resultados[i] = round(((sum(inputs)/total[i]) * 100), 2)
+    for i in range(0, len(curso)):
+        curso[i] = curso[i].replace("_", " ")
+    return render_template("result.html", resultados=resultados, curso=curso, max=len(curso))
 
 
-    
-    
-    
 if __name__ == '__main__':
     app.run(port=5000)
