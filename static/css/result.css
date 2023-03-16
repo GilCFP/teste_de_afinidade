@@ -127,3 +127,10 @@ h1 {
   font-size: 4rem;
   color: aliceblue;
 }
+a{
+  color: aliceblue;
+  text-decoration: none;
+}
+a:hover{
+  color: #04fc43;
+}

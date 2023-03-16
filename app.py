@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import random
 import os
 import requests
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 # TODO BUG: CURSO PRECISA SER GLOBAL E SER ALTERADO COMO PELA FUNÇÃO, PORÉM QUANDO ISSO ACONTECE NO PRÓXIMO USO ELE FICA SO COM 2 DE LENGHT, CAUSANDO ERRO DE INDEX
 curso = [None] * 6
 total = [None] * 6
@@ -95,7 +95,7 @@ def tester(arquivos, nomes):  # efetua o teste de afinidade para n cursos
 
 app = Flask(__name__)
 dic = dictgenerator()
-
+status = 0
 
 @app.route('/', methods=['GET'])
 def index():
@@ -104,13 +104,19 @@ def index():
     for i in range(0, 6):
         if curso[i] is not None:
             curso[i] = None
-    return render_template("index.html", dict=dic, status=0)
+    return render_template("index.html", dict=dic, status=status)
 
 
 @app.route('/result', methods=['POST'])
 def result():
+    global status
     for i in range(1, 6):
-        curso[i] = request.form.get(f"curso{i}")
+        try:
+            curso[i] = request.form.get(f"curso{i}")
+        except IndexError:
+            status = 3
+            return redirect(url_for('index'))
+            
     for i in range(1, 6):
         j = i + 1
         while j < 6:
@@ -142,17 +148,24 @@ def result():
 
 @app.route('/test', methods=['POST'])
 def test():
+    global status
     resultados = [0] * len(curso)
     for i in range(0, len(curso)):
         inputs = request.form.getlist(f"{curso[i]}")
         total[i] = len(inputs) * 5
         for j in range(0, len(inputs)):
             inputs[j] = int(inputs[j])
-        resultados[i] = round(((sum(inputs)/total[i]) * 100), 2)
+        try:
+            resultados[i] = round(((sum(inputs)/total[i]) * 100), 2)
+        except ZeroDivisionError:
+            status = 3
+            return redirect(url_for('index'))
     for i in range(0, len(curso)):
         curso[i] = curso[i].replace("_", " ")
+    status = 0
     return render_template("result.html", resultados=resultados, curso=curso, max=len(curso))
 
 
 if __name__ == '__main__':
+    app.debug = True
     app.run(port=5000)

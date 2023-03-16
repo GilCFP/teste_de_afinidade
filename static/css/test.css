@@ -9,20 +9,19 @@ h1 {
     color: aliceblue;
     align-self: center;
     margin-bottom: 5px;
+    font-size: 4em;
 }
 
 h4 {
     color: rgb(255, 255, 255);
+    font-size: 2em;
 }
 
 p {
     color: rgb(207, 207, 207);
+    font-size: 1.4em;
 }
 
-h6 {
-    margin: 0;
-    color: aliceblue;
-}
 
 .pergunta {
     display: flex;
@@ -43,7 +42,7 @@ input[type="range"] {
     -webkit-appearance: none;
     background: rgb(5, 5, 5);
     outline: none;
-    width: 20%;
+    width: 200px;
     height: 5px;
     border-radius: 9px;
     align-self: center;
@@ -83,24 +82,30 @@ form {
 
 .pouca {
     color: rgb(204, 141, 141);
+    font-size: 1em;
 }
 
 .muita {
     color: #7cb47a;
+    font-size: 1em;
 }
 
 h5 {
     color: aliceblue;
     margin-top: 0;
+    font-size: 1.3em;
 }
 
 input[type="submit"] {
     color: aliceblue;
     background-color: #027e21;
-    margin-top: 10%;
+    margin: 10% 0%;
     border-radius: 15%;
     border: NONE;
     align-self: center;
+    height: 50px;
+    width: 80px;
+    font-size: 1.2em;
 }
 
 input[type="submit"]:hover {
@@ -109,6 +114,7 @@ input[type="submit"]:hover {
     cursor: pointer;
     animation: animateButton 0.1s linear forwards;
     border: #ffffff;
+    
 }
 
 @keyframes animateButton {
@@ -117,4 +123,35 @@ input[type="submit"]:hover {
     100% {
         box-shadow: 0 0 3px #00aa2b;
     }
+}
+@media (max-width: 1024px) {
+* {
+  font-size: 0.9rem;
+}
+}
+@media (max-width: 768px) {
+h5 {
+  font-size: 1em;
+}
+}
+@media (max-width: 425px) {
+h4{
+    font-size: 1.5em;
+}
+h1{
+        font-size: 2em;
+}
+p{
+        font-size: 1.2em;
+}
+    input[type="submit"] {
+    height: 40px;
+    width: 60px;
+    font-size: 1em;
+}
+input[type="range"] {
+
+    width: 150px;
+
+}
 }

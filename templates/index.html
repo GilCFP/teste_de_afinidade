@@ -46,6 +46,9 @@
         if ({{ status }} == 2) {
             alert("Os cursos não devem ser os mesmos")
         }
+        if ({{ status }} == 3) {
+            alert("Não recarregue a página durante o processo do teste")
+        }
         function verificarSelects() {
             if (select[0].value != "empty" && select[1].value != "empty") {
                 botao.disabled = false;//habilita o botão de submit

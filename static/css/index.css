@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
 }
 
 form {
@@ -18,26 +19,27 @@ form select {
     padding: 0 30px 0 15px;
     color: white;
     background-color: #027e21;
-    width: 40%;
-    height: 30px;
-
+    width: 600px;
+    height: 50px;
+    font-size: 1.5em;
 }
 
 .select-container {
     display: flex;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 40px;
     position: relative;
+    box-shadow: 0 0 8px black;
 }
 
 .icon-container {
     position: absolute;
-    right: 30%;
+    right: 0;
     display: flex;
     align-items: center;
     background-color: darkgreen;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     justify-content: center;
     pointer-events: none;
 }
@@ -59,14 +61,18 @@ body {
 h1 {
     color: aliceblue;
     align-self: center;
+    font-size: 4em;
 }
 
 button {
     color: aliceblue;
     background-color: #027e21;
-    margin-top: 10%;
+    margin-top: 30px;
     border-radius: 15%;
     border: NONE;
+    height: 50px;
+    width: 80px;
+    font-size: 1.2em;
 }
 
 button:disabled {
@@ -88,4 +94,39 @@ button:hover:not(:disabled) {
     100% {
         box-shadow: 0 0 3px #00aa2b;
     }
+}
+@media (max-width: 1024px) {
+    h1{
+        font-size: 3em;
+    }
+    form select {
+    width: 400px;
+    height: 50px;
+
+}
+}
+@media (max-width: 768px) {
+    form select {
+    width: 300px;
+    height: 50px;
+    font-size: 1.2em;
+}
+ h1{
+        font-size: 2em;
+    }
+}
+@media (max-width: 425px) {
+    form select {
+    width: 200px;
+    height: 50px;
+    font-size: 0.8em;
+}
+ h1{
+        font-size: 1.6em;
+    }
+    button {
+    height: 40px;
+    width: 60px;
+    font-size: 1em;
+}
 }

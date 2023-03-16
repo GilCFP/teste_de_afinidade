@@ -11,6 +11,7 @@ function formatString(str) {
 
         // Capitaliza a primeira letra da primeira palavra
         if (i === 1) {
+            console.log(word)
             word = word.charAt(0).toUpperCase() + word.slice(1);
         }
         // Verifica se a palavra contém um ponto final, exclamação ou interrogação
@@ -31,6 +32,7 @@ function formatString(str) {
 
 var random = [] //inicializando uma lista com indices
 var counter = {} //manter traço do indice de cada inteiração
+console.log(quest)
 for (let j = 0; j < names.length; j++) {
     counter[names[j]] = 0
     for (let i = 0; i < quest[names[j]].length; i++) {
@@ -40,6 +42,7 @@ for (let j = 0; j < names.length; j++) {
 random.sort(function () {//embaralha a ordem
     return Math.random() - 0.5;
 });
+console.log(typeof random)
 for (i in random) {//gera as perguntas e inputs pra cada matéria
     const text = (quest[random[i]][counter[random[i]]])
     const h4 = document.createElement("h4");
