@@ -10,7 +10,7 @@ total = [None] * 6
 
 def dictgenerator():  # gera um dicionário com todos os cursos da UFMG como key direcionando ao site do respectivo curso
     link = "https://ufmg.br/cursos/graduacao/"
-    page = requests.get(link)
+    page = requests.get(link,verify=False)
     soup = BeautifulSoup(page.content, "html.parser")
     list = soup.find_all("ol", class_="drop__list--depth-1")
     dic = {}
